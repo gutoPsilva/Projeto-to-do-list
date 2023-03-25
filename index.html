@@ -18,13 +18,15 @@
     <main class="container">
         <section class="principal">
             <div class="add">
-                <input type="text" name="txtadd" id="txtadd" placeholder="Adicione uma tarefa" maxlength="100">
-                <button class="button-64"><span class="material-icons"> add </span></button>
+                <input type="text" name="txtadd" id="txtadd" placeholder="Adicione uma tarefa">
+                <button id="btnAdd"><span class="material-icons"> add </span></button>
             </div>
-            <div class="list">
-                <p>Lorem ipsum dolor sit amet consectetur lore lore</p>
-                <button><span class="material-icons">delete</span></button>
-            </div>
+            <article class="todaLis">
+                <div class="list">   
+                    <p id="tf1">Teste 1 : Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet itaque</p>
+                    <button onclick="deletar()"><span class="material-icons">delete</span></button>
+                </div>
+            </article>
         </section>
     </main>
     <footer>
@@ -32,5 +34,6 @@
             Site feito por <a href="https://github.com/gutoPsilva" target="_blank" rel="external"><abbr title="abre meu github aí meu chapa">&copy; gutoPsilva</abbr></a>
         </p>
     </footer>
+    <script src="script.js"></script>
 </body>
 </html>

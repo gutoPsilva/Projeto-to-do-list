@@ -6,26 +6,6 @@
         width: 55vw;
         border-radius: 10px 0px;
     }
-    
-    #txtadd{
-        width: 55%;
-    }
-}
-
-/* Telas Grandes*/
-@media screen and (min-width: 1200px) {
-    section.principal{
-        width: 700px;
-        border-radius: 10px 0px;
-    }
-
-    #txtadd{
-        width: 55%;
-    }
-}
-
-@media screen and (min-width: 1200px) {
-    
 }
 
 /* H1 TO-DO não invadir o principal quando estiver em telas pequenas*/
@@ -33,6 +13,33 @@
     header p {
         font-size: 2em;
     }
+    div.caixa{
+        width: auto;
+    }
+    header p{
+        text-indent: .5em; 
+    }
+}
+
+/* Telas Grandes*/
+@media screen and (min-width: 1200px) {
+    section.principal{
+        width: 600px;
+        border-radius: 10px 0px;
+    }
+
+    header p{
+        text-indent: .5em; 
+    }
+
+    #txtadd{
+        width: 55%;
+    }
+
+    div.list p{
+        width: 55%;
+    }
+
     div.caixa{
         width: auto;
     }
