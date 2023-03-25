@@ -42,6 +42,7 @@ header > p{
     /*O letter spacing não considera o espaço a ESQUERDA do primeiro caracter, logo, o text-indent ANULA esse fato*/
     text-indent: .6em; 
     letter-spacing: .6em;
+    margin-bottom: 15px;
 
     background-color: rgba(0, 0, 0, 0.644);
     border-radius: 4px;
@@ -54,9 +55,9 @@ header > p{
     align-items: center;
 }
 
-main > section.principal{
+section.principal{
     background-color: var(--tomP1);
-    width: 400px;
+    width: 300px;
     position: relative;
     top: -20px;
     box-shadow: 0px 5px 4px rgba(0, 0, 0, 0.637);
@@ -72,7 +73,7 @@ div.add, .list{
 
 #txtadd{
     padding: 5px;
-    width: 67.9%;
+    width: 70%;
     border-radius: 5px;
     border-style: none;
     text-align: center;
