@@ -92,9 +92,10 @@ div.add, .list{
     text-align: center;
 }
 
-div.list > p {
-    width: 70%; 
+.para {
+    width: 60%; 
     text-align: justify;
+    text-decoration: underline;
 }
 
 section.principal button{height: 42px;} /*previne que o btn não estique pelo resto do conteúdo no flex*/

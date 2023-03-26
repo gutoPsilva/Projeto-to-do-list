@@ -1,50 +1,61 @@
 adicionar = document.getElementById('btnAdd').addEventListener('click', add) // relaciona btnAdd e atribui click
 limpar = document.getElementById('btnLim').addEventListener('click', limpar) // relaciona btnLimpar e atribui click
-let recDel = []
-let pos = 0
-const elementoPai = document.getElementById('artLis')
+let ulLi = document.getElementById('ulLis')
 
 function add(){
     let txtTodo = document.getElementById("txtadd").value
-    let novoDiv = document.createElement('div')
+    let novoLi = document.createElement('li')
     var novoP = document.createElement('p')
-    let novoDel = document.createElement('button')
-    novoDel.innerHTML = `<abbr title="Remover" id="${pos}"><span id="${pos}" class="material-icons">delete</span></abbr>` // ID de POS para que caso clicado no elemento SPAN ou ABBR o ID seja puxado no DELETAR.
-    novoDel.addEventListener('click', deletar) // btn não existe, então em sua criação é atribuido a função
-    novoDiv.className = 'list'
-    novoDiv.id = pos //
-
-    if (txtTodo == ''){ // condicionar os espaços vazios dps
+    let novoAbbr = document.createElement('abbr')
+    novoAbbr.setAttribute('title' , 'Remover')
+    novoLi.className = 'list'
+    novoP.className = 'para'
+    novoAbbr.innerHTML = `<button><span class="material-icons">delete</span></button>` // ID de POS para que caso clicado no elemento SPAN ou ABBR o ID seja puxado no DELETAR.
+    if (txtTodo == 0){ // 0 --> VAZIO, espaço também conta como VAZIO, sacrifica a tarefa "0"
         window.alert('Digite uma tarefa antes de adicionar.')
     } else{
-        elementoPai.appendChild(novoDiv)
-        novoP.innerHTML = txtTodo
-        novoDiv.appendChild(novoP)
-        novoDiv.appendChild(novoDel)
+        novoP.innerHTML = `${txtTodo}`
+        novoLi.appendChild(novoP)
+        novoLi.appendChild(novoAbbr)
+        ulLi.appendChild(novoLi)
         document.getElementById("txtadd").value = ''
-        window.alert('posID: ' + pos)
-        pos+=1 // soma a posiçãoID depois de adicionar o objeto, isso permite limpar dps
     }
 }
 
-function deletar(e){
-    let element = e.target.id // SUBSTITUIR O ID DOS EXISTENTES
-    window.alert('Inicial: ' + element)
-    if(elementoPai.children.length == 1){ // somente 1 task na lista
-        elementoPai.removeChild(elementoPai.children[0]) // Remove a única TASK, que fica na pos[0]
-        pos = 0 // p Garantir q foi zerado
-    }else{ // mais de 1 task na list
-        elementoPai.removeChild(elementoPai.children[element])
-        window.alert('eventID: ' + element)
+ulLi.addEventListener('click', (e) => {
+    // instanciar cada elemento e dizer quem é o seu parent, para remover tudo com o removeChildren
+    let abbr 
+    let button 
+    let span
+    // 3 if's pois o botão em si é composto desses 3 elementos, portanto, isso garante que em qualquer área do botão clicada, ele pegue o target do evento correto
+    if(e.target.tagName == 'ABBR'){
+        abbr = e.target
+        let li = abbr.parentNode
+        if(abbr.innerHTML == '<button><span class="material-icons">delete</span></button>'){
+            ulLi.removeChild(li)
         }
-    document.body.style.background = 'blue' // teste func
-}
+    }else if(e.target.tagName == 'BUTTON'){
+        button = e.target
+        abbr = button.parentNode
+        let li =  abbr.parentNode
+        if(button.innerHTML == '<span class="material-icons">delete</span>'){
+            ulLi.removeChild(li)
+        }
+    }else if(e.target.tagName == 'SPAN'){
+        span = e.target
+        button = span.parentNode
+        abbr = button.parentNode
+        let li = abbr.parentNode
+        if(span.textContent == 'delete'){
+            ulLi.removeChild(li)
+        }
+    }
+})
 
 function limpar(){
-    if(pos>0){
-        while (pos > 0) {
-            elementoPai.removeChild(elementoPai.children[0]) // sempre apaga a inicial
-            pos-=1
+    if(ulLi.children.length>0){
+        while (ulLi.children.length > 0) {
+            ulLi.removeChild(ulLi.children[0]) // sempre apaga a inicial
         }
     }else{
         window.alert('Não há nada para remover.')
@@ -58,4 +69,8 @@ function alterar(){
     id.innerText = txtTodo
     document.getElementById("txtadd").value = ''
  }
+
+  while (ulLi.children.length > element) {
+                    ulLi.removeChild(ulLi.children[element]) // sempre apaga a inicial
+                }
 */
