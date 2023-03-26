@@ -6,17 +6,21 @@ function add(){
     let txtTodo = document.getElementById("txtadd").value
     let novoLi = document.createElement('li')
     var novoP = document.createElement('p')
-    let novoAbbr = document.createElement('abbr')
-    novoAbbr.setAttribute('title' , 'Remover')
+    let novoAbbrD = document.createElement('abbr')
+    let novoAbbrE = document.createElement('abbr')
+    novoAbbrD.setAttribute('title', 'Remover')
+    novoAbbrE.setAttribute('title', 'Editar')
+    novoAbbrD.innerHTML = '<button><span class="material-icons">delete</span></button>'
+    novoAbbrE.innerHTML = '<button><span class="material-icons">edit</span></button>'
     novoLi.className = 'list'
     novoP.className = 'para'
-    novoAbbr.innerHTML = `<button><span class="material-icons">delete</span></button>` // ID de POS para que caso clicado no elemento SPAN ou ABBR o ID seja puxado no DELETAR.
     if (txtTodo == 0){ // 0 --> VAZIO, espaço também conta como VAZIO, sacrifica a tarefa "0"
         window.alert('Digite uma tarefa antes de adicionar.')
     } else{
         novoP.innerHTML = `${txtTodo}`
         novoLi.appendChild(novoP)
-        novoLi.appendChild(novoAbbr)
+        novoLi.appendChild(novoAbbrD)
+        novoLi.appendChild(novoAbbrE)
         ulLi.appendChild(novoLi)
         document.getElementById("txtadd").value = ''
     }
@@ -60,6 +64,11 @@ function limpar(){
     }else{
         window.alert('Não há nada para remover.')
     }
+}
+
+function msg(){
+    window.alert('Ainda existem alguns bugs nesse projeto, a tarefa adicionada pode passar da seção e o editar ainda não funciona.')
+    window.alert('Posteriormente ajustarei esses erros, mas peço que entenda que fiz o meu melhor por agora!')
 }
 
 /* 

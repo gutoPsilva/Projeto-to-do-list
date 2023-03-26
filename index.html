@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="styles/media-querry.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
-<body>
+<body onload="msg()">
     <header>
         <div class="caixa">
             <p>TODO</p>
@@ -22,10 +22,8 @@
                 <abbr title="Remover Tudo"><button id="btnLim"><span class="material-icons"> delete_sweep </span></button></abbr>
                 <abbr title="Adicionar"><button id="btnAdd"><span class="material-icons">add</span></button></abbr>
             </div>
-            <ul class="todaLis" id="ulLis">
+            <ul class="todaLis" id="ulLis"> // Separar em 2 grupos futuramente, os botões e a tarefa(talvez arrume a não quebra de linha).
                 <li class="list">
-                    <p class="para">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis ratione nisi quisquam. Hic nam, nisi optio aspernatur sit unde veritatis velit dolore vitae, cupiditate laborum, voluptates ullam reprehenderit possimus quis?</p>
-                    <abbr title="Remover"><button><span class="material-icons">delete</span></button></abbr>
                 </li>
             </ul>
         </section>

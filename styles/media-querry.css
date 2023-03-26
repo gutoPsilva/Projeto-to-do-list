@@ -19,20 +19,14 @@
 
 /* Telas Grandes*/
 @media screen and (min-width: 1200px) {
-    :root{
-        --width: 55%;
-    }
+    :root{--width: 55%;}
 
     section.principal{
-        width: 600px;
+        width: 750px;
         border-radius: 10px 0px;
     }
 
-    header p{
-        text-indent: .5em; 
-    }
+    header p{text-indent: .9em; }
 
-    .caixa{
-        width: auto;
-    }
+    .caixa{width: auto;}
 }
