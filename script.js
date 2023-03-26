@@ -1,22 +1,54 @@
-adicionar = document.getElementById('btnAdd')
-adicionar.addEventListener('click', add)
+adicionar = document.getElementById('btnAdd').addEventListener('click', add) // relaciona btnAdd e atribui click
+limpar = document.getElementById('btnLim').addEventListener('click', limpar) // relaciona btnLimpar e atribui click
+let recDel = []
+let pos = 0
+const elementoPai = document.getElementById('artLis')
 
 function add(){
-    let saida = document.getElementById('todaLis')
     let txtTodo = document.getElementById("txtadd").value
-    let p1 = document.getElementById('tf1')
-    if (txtTodo == ''){ // incrementar condicões c espaço dps
+    let novoDiv = document.createElement('div')
+    var novoP = document.createElement('p')
+    let novoDel = document.createElement('button')
+    novoDel.innerHTML = `<abbr title="Remover" id="${pos}"><span id="${pos}" class="material-icons">delete</span></abbr>` // ID de POS para que caso clicado no elemento SPAN ou ABBR o ID seja puxado no DELETAR.
+    novoDel.addEventListener('click', deletar) // btn não existe, então em sua criação é atribuido a função
+    novoDiv.className = 'list'
+    novoDiv.id = pos //
+
+    if (txtTodo == ''){ // condicionar os espaços vazios dps
         window.alert('Digite uma tarefa antes de adicionar.')
     } else{
-        p1.innerText = txtTodo // teste dp substituir
-        // saida.appendChild()
-        document.getElementById("txtadd").value = '' // clear
+        elementoPai.appendChild(novoDiv)
+        novoP.innerHTML = txtTodo
+        novoDiv.appendChild(novoP)
+        novoDiv.appendChild(novoDel)
+        document.getElementById("txtadd").value = ''
+        window.alert('posID: ' + pos)
+        pos+=1 // soma a posiçãoID depois de adicionar o objeto, isso permite limpar dps
     }
-    document.body.style.background = 'red' // teste func
 }
 
-function deletar(){
+function deletar(e){
+    let element = e.target.id // SUBSTITUIR O ID DOS EXISTENTES
+    window.alert('Inicial: ' + element)
+    if(elementoPai.children.length == 1){ // somente 1 task na lista
+        elementoPai.removeChild(elementoPai.children[0]) // Remove a única TASK, que fica na pos[0]
+        pos = 0 // p Garantir q foi zerado
+    }else{ // mais de 1 task na list
+        elementoPai.removeChild(elementoPai.children[element])
+        window.alert('eventID: ' + element)
+        }
     document.body.style.background = 'blue' // teste func
+}
+
+function limpar(){
+    if(pos>0){
+        while (pos > 0) {
+            elementoPai.removeChild(elementoPai.children[0]) // sempre apaga a inicial
+            pos-=1
+        }
+    }else{
+        window.alert('Não há nada para remover.')
+    }
 }
 
 /* 
