@@ -1,13 +1,14 @@
-adicionar = document.getElementById('btnAdd').addEventListener('click', add) // relaciona btnAdd e atribui click
-limpar = document.getElementById('btnLim').addEventListener('click', limpar) // relaciona btnLimpar e atribui click
-const ulLi = document.getElementById('ulLis')
+adicionar = document.getElementById('btnAdd').addEventListener('click', add) // relaciona btnAdd a função add
+limpar = document.getElementById('btnLim').addEventListener('click', limpar) // relaciona btnLim a função limpar
+const ulLi = document.getElementById('ulLis') // elemento pai da lista
 
+// functions fixas pois são botões que já existem
 function add(){
+    let txtTodo = document.getElementById('txtadd').value
     const novoLi = document.createElement('li')
     const novoTxt = document.createElement('p')
-    let txtTodo = document.getElementById('txtadd').value
-    const novoAbbrD = document.createElement('abbr')
-    const novoAbbrE = document.createElement('abbr')
+    const novoAbbrD = document.createElement('abbr') // botão deletar
+    const novoAbbrE = document.createElement('abbr') // botão editar
     novoAbbrD.innerHTML = '<button><span class="material-icons">delete</span></button>'
     novoAbbrE.innerHTML = '<button><span class="material-icons">edit</span></button>'
     novoAbbrD.setAttribute('title', 'Remover')
@@ -54,12 +55,9 @@ ulLi.addEventListener('click', (e) => {
         else if(button.innerHTML == '<span class="material-icons">edit</span>'){
             if(document.getElementById('txtadd').value == 0){
                 document.getElementById('txtadd').setAttribute('placeholder', 'Insira o texto aqui!') 
-                window.alert('Insira um texto na caixa antes de editar a tarefa.')
             }else {
                 const p = li.firstElementChild
-                // p.innerText = edTxt
-                let edTxt = document.getElementById('txtadd').value
-                p.innerText = edTxt
+                p.innerText = document.getElementById('txtadd').value
                 document.getElementById('txtadd').value = ''
                 document.getElementById('txtadd').setAttribute('placeholder', 'Adicione uma tarefa') 
             }
@@ -81,9 +79,7 @@ ulLi.addEventListener('click', (e) => {
                 document.getElementById('txtadd').setAttribute('placeholder', 'Insira o texto aqui!')
             }else{
                 const p = li.firstElementChild
-                // p.innerText = edTxt
-                let edTxt = document.getElementById('txtadd').value
-                p.innerText = edTxt
+                p.innerText = document.getElementById('txtadd').value
                 document.getElementById('txtadd').value = ''
                 document.getElementById('txtadd').setAttribute('placeholder', 'Adicione uma tarefa') 
             }
