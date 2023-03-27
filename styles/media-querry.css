@@ -19,8 +19,6 @@
 
 /* Telas Grandes*/
 @media screen and (min-width: 1200px) {
-    :root{--width: 55%;}
-
     section.principal{
         width: 750px;
         border-radius: 10px 0px;

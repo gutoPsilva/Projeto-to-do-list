@@ -92,10 +92,12 @@ div.add, .list{
     text-align: center;
 }
 
-.txt{
+.list > p{
     color: white;
     width: 60%; 
     text-align: justify;
+    overflow: hidden;
+    overflow-wrap: break-word;
 }
 
 section.principal button{height: 42px;} /*previne que o btn não estique pelo resto do conteúdo no flex*/
