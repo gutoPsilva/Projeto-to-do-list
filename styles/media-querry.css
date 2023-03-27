@@ -28,5 +28,7 @@
 
     header p{text-indent: .9em; }
 
-    .caixa{width: auto;}
+    .caixa{width: auto;}  
+
+    .remover{margin: 0px 15px;}
 }

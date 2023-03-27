@@ -75,7 +75,7 @@ section.principal button{
     background-color: inherit;
 }
 
-section.principal p, button{color: #FFFFFF;}
+section.principal .txt, button{color: #FFFFFF;}
 
 div.add, .list{
     margin: 10px;
@@ -92,7 +92,8 @@ div.add, .list{
     text-align: center;
 }
 
-.para {
+.txt{
+    color: white;
     width: 60%; 
     text-align: justify;
 }
