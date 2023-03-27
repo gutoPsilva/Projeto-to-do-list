@@ -26,6 +26,16 @@ function add(){
     }
 }
 
+function limpar(){
+    if(ulLi.children.length>0){
+        while (ulLi.children.length > 0) {
+            ulLi.removeChild(ulLi.children[0]) // sempre apaga a inicial
+        }
+    }else{
+        window.alert('Não há nada para remover.')
+    }
+}
+// deletar e editar, diferentes do function ADD e LIMPAR pois são gerados dinamicamente'
 ulLi.addEventListener('click', (e) => {
     // instanciar cada elemento e dizer quem é o seu parent, para depois então remover tudo com o removeChildren da ul
     let button
@@ -75,13 +85,3 @@ ulLi.addEventListener('click', (e) => {
         }
     }
 })
-
-function limpar(){
-    if(ulLi.children.length>0){
-        while (ulLi.children.length > 0) {
-            ulLi.removeChild(ulLi.children[0]) // sempre apaga a inicial
-        }
-    }else{
-        window.alert('Não há nada para remover.')
-    }
-}
