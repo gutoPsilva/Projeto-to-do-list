@@ -23,6 +23,7 @@ function add(){
         novoLi.appendChild(novoAbbrE)
         ulLi.appendChild(novoLi)
         document.getElementById("txtadd").value = ''
+        document.getElementById('txtadd').setAttribute('placeholder', 'Adicione uma tarefa')
     }
 }
 
@@ -35,20 +36,19 @@ function limpar(){
         window.alert('Não há nada para remover.')
     }
 }
-// deletar e editar, diferentes do function ADD e LIMPAR pois são gerados dinamicamente'
+
+// deletar e editar, diferentes do function ADD e LIMPAR pois são gerados dinamicamente
 ulLi.addEventListener('click', (e) => {
-    // instanciar cada elemento e dizer quem é o seu parent, para depois então remover tudo com o removeChildren da ul
-    let button
-    let abbr
-    let li
 
     // 2 if's pois o botão em si é composto desses 3 elementos, portanto, isso garante que em qualquer área cliada, ele pegue o target event do elemento correto. PS: poderia ter outro if do ABBR, já que ele contém o button e o span, mas sua área é muita pequena, o que mais ocupa espaço é o BTN e o SPAN, sem o abbr o código fica mais limpo também.
 
     if(e.target.tagName == 'BUTTON'){
-        button = e.target
+        // instanciar cada elemento e dizer quem é o seu parent para saber quem é quem
+        const button = e.target
+        const abbr = button.parentNode
+        const li = abbr.parentNode
+
         if(button.innerHTML == '<span class="material-icons">delete</span>'){
-            abbr = button.parentNode
-            li = abbr.parentNode
             ulLi.removeChild(li)
         }
         else if(button.innerHTML == '<span class="material-icons">edit</span>'){
@@ -56,26 +56,31 @@ ulLi.addEventListener('click', (e) => {
                 document.getElementById('txtadd').setAttribute('placeholder', 'Insira o texto aqui!') 
                 window.alert('Insira um texto na caixa antes de editar a tarefa.')
             }else {
+                const p = li.firstElementChild
+                // p.innerText = edTxt
                 let edTxt = document.getElementById('txtadd').value
+                p.innerText = edTxt
                 document.getElementById('txtadd').value = ''
                 document.getElementById('txtadd').setAttribute('placeholder', 'Adicione uma tarefa') 
             }
         }
     }
+
     if(e.target.tagName == 'SPAN'){
-        let span = e.target
+        // instanciar cada elemento e dizer quem é o seu parent para saber quem é quem
+        const span = e.target    
+        const button = span.parentNode
+        const abbr = button.parentNode
+        const li = abbr.parentNode
+
         if(span.textContent == 'delete'){
-            button = span.parentNode
-            abbr = button.parentNode
-            li = abbr.parentNode
             ulLi.removeChild(li)
         }
         else if(span.textContent == 'edit'){
             if(document.getElementById('txtadd').value == 0){
                 document.getElementById('txtadd').setAttribute('placeholder', 'Insira o texto aqui!')
             }else{
-                li = ulLi.firstElementChild
-                p = li.firstElementChild
+                const p = li.firstElementChild
                 // p.innerText = edTxt
                 let edTxt = document.getElementById('txtadd').value
                 p.innerText = edTxt
