@@ -3,11 +3,11 @@ limpar = document.getElementById('btnLim').addEventListener('click', limpar) // 
 const ulLi = document.getElementById('ulLis')
 
 function add(){
-    let novoLi = document.createElement('li')
-    var novoTxt = document.createElement('p')
+    const novoLi = document.createElement('li')
+    const novoTxt = document.createElement('p')
     let txtTodo = document.getElementById('txtadd').value
-    let novoAbbrD = document.createElement('abbr')
-    let novoAbbrE = document.createElement('abbr')
+    const novoAbbrD = document.createElement('abbr')
+    const novoAbbrE = document.createElement('abbr')
     novoAbbrD.innerHTML = '<button><span class="material-icons">delete</span></button>'
     novoAbbrE.innerHTML = '<button><span class="material-icons">edit</span></button>'
     novoAbbrD.setAttribute('title', 'Remover')
@@ -17,7 +17,7 @@ function add(){
     if (txtTodo == 0){ // 0 --> VAZIO, espaço também conta como VAZIO, sacrifica a tarefa "0"
         window.alert('Digite uma tarefa antes de adicionar.')
     } else{
-        novoTxt.innerHTML = txtTodo
+        novoTxt.innerText = txtTodo
         novoLi.appendChild(novoTxt)
         novoLi.appendChild(novoAbbrD)
         novoLi.appendChild(novoAbbrE)
@@ -27,34 +27,18 @@ function add(){
 }
 
 ulLi.addEventListener('click', (e) => {
-    // instanciar cada elemento e dizer quem é o seu parent, para remover tudo com o removeChildren
-    let abbr 
-    let button 
-    let span
+    // instanciar cada elemento e dizer quem é o seu parent, para depois então remover tudo com o removeChildren da ul
+    let button
+    let abbr
     let li
-    let para
-    // 3 if's pois o botão em si é composto desses 3 elementos, portanto, isso garante que em qualquer área do botão clicada, ele pegue o target do evento correto
 
-    if(e.target.tagName == 'ABBR'){
-        abbr = e.target
-        if(abbr.innerHTML == '<button><span class="material-icons">delete</span></button>'){
-            li = abbr.parentNode
-            ulLi.removeChild(li)
-        }else if(abbr.innerHTML == '<button><span class="material-icons">edit</span></button>'){
-            if(document.getElementById('txtadd').value == 0){
-                document.getElementById('txtadd').setAttribute('placeholder', 'Insira o texto aqui!') 
-                window.alert('Insira um texto na caixa antes de editar a tarefa.')
-            }else{
-                let edTxt = document.getElementById('txtadd').value
-                document.getElementById('txtadd').value = ''
-                document.getElementById('txtadd').setAttribute('placeholder', 'Adicione uma tarefa')
-            }
-        }
-    }else if(e.target.tagName == 'BUTTON'){
+    // 2 if's pois o botão em si é composto desses 3 elementos, portanto, isso garante que em qualquer área cliada, ele pegue o target event do elemento correto. PS: poderia ter outro if do ABBR, já que ele contém o button e o span, mas sua área é muita pequena, o que mais ocupa espaço é o BTN e o SPAN, sem o abbr o código fica mais limpo também.
+
+    if(e.target.tagName == 'BUTTON'){
         button = e.target
         if(button.innerHTML == '<span class="material-icons">delete</span>'){
             abbr = button.parentNode
-            li =  abbr.parentNode
+            li = abbr.parentNode
             ulLi.removeChild(li)
         }
         else if(button.innerHTML == '<span class="material-icons">edit</span>'){
@@ -67,8 +51,9 @@ ulLi.addEventListener('click', (e) => {
                 document.getElementById('txtadd').setAttribute('placeholder', 'Adicione uma tarefa') 
             }
         }
-    }else if(e.target.tagName == 'SPAN'){
-        span = e.target
+    }
+    if(e.target.tagName == 'SPAN'){
+        let span = e.target
         if(span.textContent == 'delete'){
             button = span.parentNode
             abbr = button.parentNode
@@ -77,11 +62,13 @@ ulLi.addEventListener('click', (e) => {
         }
         else if(span.textContent == 'edit'){
             if(document.getElementById('txtadd').value == 0){
-                document.getElementById('txtadd').setAttribute('placeholder', 'Insira o texto aqui!') 
-                window.alert('Insira um texto na caixa antes de editar a tarefa.')
+                document.getElementById('txtadd').setAttribute('placeholder', 'Insira o texto aqui!')
             }else{
-                para = li.
+                li = ulLi.firstElementChild
+                p = li.firstElementChild
+                // p.innerText = edTxt
                 let edTxt = document.getElementById('txtadd').value
+                p.innerText = edTxt
                 document.getElementById('txtadd').value = ''
                 document.getElementById('txtadd').setAttribute('placeholder', 'Adicione uma tarefa') 
             }
@@ -98,16 +85,3 @@ function limpar(){
         window.alert('Não há nada para remover.')
     }
 }
-
-/* 
-editar tarefa, pegar pelo ID da tf
-function alterar(){
-    let txtTodo = document.getElementById("txtadd").value
-    id.innerText = txtTodo
-    document.getElementById("txtadd").value = ''
- }
-
-  while (ulLi.children.length > element) {
-                    ulLi.removeChild(ulLi.children[element]) // sempre apaga a inicial
-                }
-*/
