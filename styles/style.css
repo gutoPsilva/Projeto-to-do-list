@@ -8,7 +8,6 @@
 }
 
 :root{
-    --priCor: #15183B;
     --tomP1:  #161f31;
     --tomP2:  #191825; /*#161722*/
 }
@@ -66,8 +65,7 @@ section.principal{
     box-shadow: 0px 5px 4px rgba(0, 0, 0, 0.637);
     border-radius: 0px 0px 15px 15px;
 
-    transition: width .5s, height .5s;
-    transition-timing-function: ease;
+    transition: width .5s ease, height .5s ease;
 }
 
 section.principal button{ 
@@ -77,10 +75,19 @@ section.principal button{
     background-color: inherit;
 }
 
-button{color: #FFFFFF;}
+button{
+    color: #FFFFFF;
+    transition: all .2s ease-in-out
+    /*All aplica as propriedades da transition a todos os elementos, substituiu: 
+    border-color .2s ease-in-out, color .2s ease-in-out, background-color .2s ease-in-out;*/
+}
 
 .list button:hover, .add button:hover{
-    animation: efeitoBT .4s forwards;
+    background-color: white;
+    border-color: inherit;
+    color: var(--tomP1);
+    transform: translateY(-5px);
+
     cursor: pointer;
 }
 
@@ -126,14 +133,3 @@ footer a, abbr{
 }
 
 footer a:hover{text-decoration: underline;}
-
-@keyframes efeitoBT {
-    0%{
-
-    }
-    100%{
-        background-color: white;
-        border-color: inherit;
-        color: var(--tomP1);
-    }
-}
