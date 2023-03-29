@@ -31,9 +31,11 @@ header{
     background: var(--tomP1) url(../images/spaceD.jpg) no-repeat center center;
     background-size: cover;
     box-shadow: inset 0px -4px 4px rgba(0, 0, 0, 0.637);
+    cursor: default;
+    pointer-events: none;
 }
 
-header p{
+header h1{
     color: #FFFFFF;
     font-size: 3em;
     text-shadow: 2px 4px 4px black;
@@ -75,9 +77,16 @@ section.principal button{
     background-color: inherit;
 }
 
-section.principal .txt, button{color: #FFFFFF;}
+button{color: #FFFFFF;}
 
-div.add, .list{
+.list button:hover, .add button:hover{
+    animation: efeitoBT .4s forwards;
+    cursor: pointer;
+}
+
+button, #txtadd{box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.658);}
+
+.add, .info, .list{
     margin: 10px;
     padding: 5px;
     display: flex;
@@ -96,8 +105,9 @@ div.add, .list{
     color: white;
     width: 60%; 
     text-align: justify;
-    overflow: hidden;
+    overflow: hidden; /*OVERFLOW acontece pq foi add. muito texto no P, logo, esconder o que sobresai e colocar na linha abaixo resolve*/
     overflow-wrap: break-word;
+    cursor: default;
 }
 
 section.principal button{height: 42px;} /*previne que o btn não estique pelo resto do conteúdo no flex*/
@@ -116,3 +126,14 @@ footer a, abbr{
 }
 
 footer a:hover{text-decoration: underline;}
+
+@keyframes efeitoBT {
+    0%{
+
+    }
+    100%{
+        background-color: white;
+        border-color: inherit;
+        color: var(--tomP1);
+    }
+}
