@@ -10,7 +10,7 @@
 
 /* H1 TO-DO não invadir o principal quando estiver em telas pequenas*/
 @media screen and (max-height:400px) {
-    header p {
+    header h1 {
         font-size: 2em;
         text-indent: .5em; 
     }
@@ -24,7 +24,7 @@
         border-radius: 10px 0px;
     }
 
-    header p{text-indent: .9em; }
+    header h1{text-indent: .9em; }
 
     .caixa{width: auto;}  
 
